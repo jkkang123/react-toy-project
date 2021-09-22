@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const ID_KEY = 'ID_KEY';
-const SECRET_KEY = 'SECRET_KEY';
+const ID_KEY = 'OlzrFYoPy_eBbrzX7kVz';
+const SECRET_KEY = 'deSaeUt4Rk';
 
 const api = axios.create({
   baseURL: '/api',

@@ -13,19 +13,13 @@ class Detail extends React.Component {
         if(state){
             return(
             <div className="movie">
-                <img src={state.poster} alt={state.title} titlt={state.title}></img>
+                <img src={state.image} alt={state.title} titlt={state.title}></img>
             <div className="movie__data">
-                <h3 className="movie__title">{state.title}</h3>
-                <h4 className="movie__rating">{state.rating}/10</h4>
-                <h5 className="movie__year">{state.year}</h5>
-                <ul className="movie__genres">
-                    {state.genres.map((genre, index) => (
-                    <li key={index} className="genres__genre">
-                    {genre}
-                    </li>
-                    ))}
-                </ul>
-                <p className="movie__summary">{state.summary}</p>
+                <h3 className="movie__title">{state.title.replace(/<b>/gi,"").replace(/<\/b>/gi,"")}</h3>
+                <h4 className="movie__rating">평점: {state.userRating}/10</h4>
+                <h5 className="movie__year">개봉년도: {state.pubDate}</h5>
+                <p>자세히: <a className="movie__link" href={state.link}>링크</a></p>
+                
             </div>
             </div>
             )

@@ -3,6 +3,7 @@ import axios from 'axios';
 import SearchMovie from '../components/SearchMovie';
 import "./Home.css";
 import "./Search.css";
+import Detail from "../routes/Detail";
 import {naverMoviesApi} from '../api';
 
 class Search extends React.Component {
@@ -12,7 +13,7 @@ class Search extends React.Component {
     value: "",
     name: ""
   };
-
+  
   getSearchMovie = async () => {
     console.log('search Movie');
     const search = this.state.value;
@@ -41,7 +42,7 @@ class Search extends React.Component {
       } else {
         const {data: {
             items
-          }} = await axios.get('http://ec2-15-164-100-174.ap-northeast-2.compute.amazonaws.com:3001/search',{
+          }} =await axios.get('http://localhost:3001/search',{
             params:{
               query: search
             }
@@ -87,7 +88,7 @@ class Search extends React.Component {
                 <input className="input_search" type="text" value={this.state.value} onChange={this.handleChange} placeholder="영화를 검색해 보세요."/>
               </div>
               <div className="movies">
-                {movies.map(movie => (<SearchMovie key={movie.link} id={movie.link} year={movie.pubDate} title={movie.title} poster={movie.image} rating={movie.userRating} director={movie.director} actor={movie.actor}/>))}
+                {movies.map(movie => (<SearchMovie link={movie.link} pubDate={movie.pubDate} title={movie.title} image={movie.image} subtitle={movie.subtitle} userRating={movie.userRating} director={movie.director} actor={movie.actor}/>))}
               </div>
             </div>
           </form>)
